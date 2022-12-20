@@ -76,6 +76,8 @@ lap6 <- p1_de$data[[2]] %>%
   as_tibble() %>% 
   select(-size, - fill, -alpha, - stroke)
 
+lap7 <- cbind(lap3, mean_rt = lap4$rt, xxx = c(1.4, 1.6))
+
 set.seed(1234566)
 p2 <- ggplot(fhch_agg, aes(x = task, y = rt)) +
   geom_violin(width = vio_width) +
@@ -87,6 +89,9 @@ p2 <- ggplot(fhch_agg, aes(x = task, y = rt)) +
   geom_segment(data = lap5, mapping = aes(x = xmin, xend = xmax,
                                           y = rt, yend = rt),
                colour = "red", linetype = 2) +
+  geom_segment(data = lap7, mapping = aes(x = xxx, xend = xxx,
+                                          y = rt, yend = mean_rt ),
+               colour = "red", linetype = 1) +
   stat_summary(colour = "red") +
   labs(y = ylab)
 p2
