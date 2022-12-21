@@ -235,6 +235,7 @@ p2 <- fhch3 %>%
 #   mutate(trial = seq_len(n())) %>%
 #   filter(id %in% c("L5")) %>%
 #   View()
+## tidyverse rocks!
 
 out <- bind_rows(p1, tibble(id = NA), p2)
 
