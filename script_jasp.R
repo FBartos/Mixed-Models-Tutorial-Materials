@@ -11,6 +11,10 @@ data("fhch2010")
 fhch <- as_tibble(droplevels(fhch2010[ fhch2010$correct,])) # remove errors
 str(fhch2010) # structure of the data
 
+fhch %>% 
+  group_by(id, stimulus) %>% 
+  count()
+
 ####
 
 ylab <- "response time (s)"
